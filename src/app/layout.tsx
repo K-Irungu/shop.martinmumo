@@ -15,7 +15,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Shop | Martin Mumo",
-  description: "Explore the exclusive Martin Mumo collection. Shop high-quality apparel, accessories, and curated finds designed to elevate your lifestyle.",
+  description: "Explore the Martin Mumo Collection - curated stories, crafted experiences",
 };
 export default function RootLayout({
   children,
