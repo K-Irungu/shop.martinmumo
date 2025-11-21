@@ -40,7 +40,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
   };
 
   return (
-    <div className="shadow-lg rounded-lg overflow-hidden border border-black/10">
+    <div className="shadow-lg rounded-lg overflow-hidden border border-black/10 min-w-xs">
       {/* IMAGE */}
       <Link href={`/products/${product.id}`}>
         <div className="relative aspect-[3/3] ">
@@ -102,7 +102,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
           </div> */}
         </div>
         {/* PRICE AND ADD TO CART BUTTON */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between ">
           <p className="font-medium">
             KES{" "}
             {product.price.toLocaleString("en-US", {
