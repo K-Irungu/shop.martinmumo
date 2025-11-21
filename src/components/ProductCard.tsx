@@ -16,18 +16,18 @@ const ProductCard = ({ product }: { product: ProductType }) => {
 
   const { addToCart } = useCartStore();
 
-  const handleProductType = ({
-    type,
-    value,
-  }: {
-    type: "size" | "color";
-    value: string;
-  }) => {
-    setProductTypes((prev) => ({
-      ...prev,
-      [type]: value,
-    }));
-  };
+  // const handleProductType = ({
+  //   type,
+  //   value,
+  // }: {
+  //   type: "size" | "color";
+  //   value: string;
+  // }) => {
+  //   setProductTypes((prev) => ({
+  //     ...prev,
+  //     [type]: value,
+  //   }));
+  // };
 
   const handleAddToCart = () => {
     addToCart({

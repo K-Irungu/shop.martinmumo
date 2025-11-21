@@ -5,19 +5,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"], // Required: Prevents loading unused characters
   weight: ["400", "500", "600", "700"], // Required: Choose the weights you need
-});
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {

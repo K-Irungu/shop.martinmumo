@@ -10,7 +10,7 @@ const PesapalCheckout = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { cart, shippingInfo, hasHydrated } = useCartStore();
-  const router = useRouter();
+  // const router = useRouter();
 
   // Helper to check if cart is empty
   const isCartEmpty = cart.length === 0;
@@ -39,11 +39,11 @@ const PesapalCheckout = () => {
     setIsLoading(true);
 
     // 1. Prepare the payload from your Store data
-    const paymentPayload = {
-        shippingInfo: {...shippingInfo}, 
-        amount: totalAmount,
-        cart: cart // Pass the array directly
-    };
+    // const paymentPayload = {
+    //     shippingInfo: {...shippingInfo}, 
+    //     amount: totalAmount,
+    //     cart: cart // Pass the array directly
+    // };
 
     // console.log("Submitting Order with:", paymentPayload);
 

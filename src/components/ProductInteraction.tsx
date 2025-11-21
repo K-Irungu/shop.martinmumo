@@ -23,11 +23,11 @@ const ProductInteraction = ({
 
   const { addToCart } = useCartStore();
 
-  const handleTypeChange = (type: string, value: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set(type, value);
-    router.push(`${pathname}?${params.toString()}`, { scroll: false });
-  };
+  // const handleTypeChange = (type: string, value: string) => {
+  //   const params = new URLSearchParams(searchParams.toString());
+  //   params.set(type, value);
+  //   router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  // };
 
   const handleQuantityChange = (type: "increment" | "decrement") => {
     if (type === "increment") {

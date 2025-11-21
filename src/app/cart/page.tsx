@@ -3,7 +3,7 @@
 import PesapalCheckout from "@/components/PesapalCheckout";
 import ShippingForm from "@/components/ShippingForm";
 import useCartStore from "@/stores/cartStore";
-import { CartItemsType, ShippingFormInputs } from "@/types";
+
 import { ArrowRight, Trash2, ShoppingBag } from "lucide-react"; // Added ShoppingBag icon
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
