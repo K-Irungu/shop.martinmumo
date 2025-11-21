@@ -5,7 +5,7 @@ import Image from "next/image";
 // TEMPORARY
 const product: ProductType = {
   id: 1,
-  name: "Ama Dablam 2025 (Hard Copy)",
+  name: "Ama Dablam 2025 Pre-order (Hard Copy)",
   shortDescription: "A technical climbing journey of grit, vision and purpose.",
   description: "A technical climbing journey of grit, vision and purpose.",
   price: 1500,
