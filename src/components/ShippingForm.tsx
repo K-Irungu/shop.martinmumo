@@ -93,7 +93,7 @@ const ShippingForm = () => {
           className="border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
           type="text"
           id="phone"
-          placeholder="123456789"
+          placeholder="0712345678"
           {...register("phone")}
         />
         {errors.phone && (
