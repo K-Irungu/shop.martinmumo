@@ -38,7 +38,7 @@ const Footer = () => {
         {/* <Link href="/">About</Link> */}
         {/* <Link href="https://martinmumo.co.ke/contact">Contact</Link> */}
         <Link href="/terms-and-conditions">Terms & Conditions</Link>
-        <Link href="/privacy-policy">Privacy Policy</Link>
+        <Link href="#">Privacy Policy</Link>
       </div>
     </div>
   );

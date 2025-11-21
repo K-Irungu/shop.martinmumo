@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import SearchBar from "./SearchBar";
-import {  Home } from "lucide-react";
+import { Home } from "lucide-react";
 import ShoppingCartIcon from "./ShoppingCartIcon";
 
 const Navbar = () => {
   return (
-    <nav className="w-full flex items-center justify-between border-b border-gray-200 bg-[#2F4970] rounded-full px-10 py-2">
+    <nav className="w-full flex items-center justify-between border-b border-gray-200 bg-[#2F4970] rounded-full px-10 py-3">
       {/* LEFT */}
       <Link href="/" className="flex items-center">
         <Image
@@ -16,18 +16,27 @@ const Navbar = () => {
           height={100}
           className=" "
         />
-        <p className="hidden md:block text-md font-medium tracking-wider">
-
-        </p>
+        <p className="hidden md:block text-md font-medium tracking-wider"></p>
       </Link>
       {/* RIGHT */}
-      <div className="flex items-center gap-6">
-        <SearchBar />
-        <Link href="/">
-          <Home className="w-4 h-4 text-white"/>
-        </Link>
-        {/* <Bell className="w-4 h-4 text-white"/> */}
-        <ShoppingCartIcon/>
+      <div className="flex items-center gap-6 w-full justify-end">
+        {/* <SearchBar /> */}
+        <div className="flex justify-between gap-10 mr-10">
+          <Link href="/" className="text-white">
+            {/* <Home className="w-4 h-4 text-white"/> */}
+            Home
+          </Link>
+          <Link href="/terms-and-conditions" className="text-white">
+            {/* <Home className="w-4 h-4 text-white"/> */}
+            Terms & Conditions
+          </Link>
+          <Link href="#" className="text-white">
+            {/* <Home className="w-4 h-4 text-white"/> */}
+            Privacy Policy
+          </Link>
+        </div>
+
+        <ShoppingCartIcon />
         {/* <Link href="/login" className="text-white">Account</Link> */}
       </div>
     </nav>
