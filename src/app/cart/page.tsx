@@ -3,10 +3,10 @@
 import PesapalCheckout from "@/components/PesapalCheckout";
 import ShippingForm from "@/components/ShippingForm";
 import useCartStore from "@/stores/cartStore";
-
-import { ArrowRight, Trash2, ShoppingBag } from "lucide-react"; // Added ShoppingBag icon
+import { ArrowRight, Trash2, ShoppingBag, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react"; // 1. Import Suspense
 
 const steps = [
   { id: 1, title: "Shopping Cart" },
@@ -14,7 +14,9 @@ const steps = [
   { id: 3, title: "Pesapal Checkout" },
 ];
 
-const CartPage = () => {
+// 2. Rename your main logic component to "CartContent"
+// This component uses useSearchParams, so it causes the build error if not wrapped.
+const CartContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -58,7 +60,6 @@ const CartPage = () => {
       <div className="w-full flex flex-col lg:flex-row gap-16">
         {/* MAIN CONTENT AREA */}
         <div className="w-full lg:w-7/12 shadow-lg border-1 border-gray-100 rounded-lg flex flex-col gap-8 min-h-[400px]">
-          
           {activeStep === 1 ? (
             // --- STEP 1 LOGIC ---
             cart.length > 0 ? (
@@ -105,7 +106,9 @@ const CartPage = () => {
               // CASE B: EMPTY CART
               <div className="h-full flex flex-col items-center justify-center py-20 gap-4 opacity-50">
                 <ShoppingBag className="w-16 h-16 text-gray-300" />
-                <p className="text-lg font-medium text-gray-500">No items in cart</p>
+                <p className="text-lg font-medium text-gray-500">
+                  No items in cart
+                </p>
               </div>
             )
           ) : activeStep === 2 ? (
@@ -169,6 +172,21 @@ const CartPage = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+// 3. Create the wrapper component
+const CartPage = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full h-[600px] flex items-center justify-center">
+          <Loader2 className="w-10 h-10 animate-spin text-gray-400" />
+        </div>
+      }
+    >
+      <CartContent />
+    </Suspense>
   );
 };
 
