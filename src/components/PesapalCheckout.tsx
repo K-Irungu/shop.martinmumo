@@ -113,8 +113,7 @@ const PesapalCheckout = () => {
         console.error("Payment gateway didn't return a redirect URL.");
       }
 
-      // 4. Send Notification
-      // 5. Get Transaction Status
+      
     } catch (error) {
       console.error("Payment Error:", error);
     } finally {

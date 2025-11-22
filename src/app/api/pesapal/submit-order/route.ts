@@ -1,5 +1,6 @@
 // app/api/pesapal/submit-order/route.js
 import { NextResponse } from "next/server";
+import { sendEmail } from "@/lib/mailer";
 
 export async function POST(req: Request) {
   // 1. Grab exactly what the client is sending
@@ -72,6 +73,11 @@ export async function POST(req: Request) {
         error: data.error,
       });
     }
+
+    // Send email to admin
+     // Send email to customer
+    // await sendEmail(orderPayload.email_address);
+
 
     return NextResponse.json({
       status: data.status,

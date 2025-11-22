@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 import { ShoppingBag } from "lucide-react"; // Just for icons if needed, not logic
+import { generateOrderEmail } from "@/utils/emailTemplates";
+import useCartStore from "@/stores/cartStore";
+import { sendEmail } from "@/lib/mailer";
 
 export async function GET(request: Request) {
   // Pesapal might send a GET request
@@ -79,9 +82,55 @@ async function processPaymentUpdate(trackingId: string, reference: string) {
   // statusData looks like: { payment_status_description: "Completed", status_code: 1, ... }
   console.log("Actual Payment Status:", statusData.payment_status_description);
 
-  // STEP 3: Update your Database
+
   if (statusData.payment_status_description === "Completed") {
-    // TODO: Run your Mongoose update here
+    // 1. Prepare Data
+    const emailData = {
+      orderId: reference,
+      trackingId: trackingId,
+      orderDate: new Date().toDateString(),
+      customerName: "shippingInfo.firstName",
+      shippingDetails: {
+        firstName:"",
+        lastName:"",
+        email:"",
+        phone:"",
+        line1:"",
+        line2:"",
+        city:""
+      },
+      cartItems: [], // Your cart array from DB
+      totalAmount:1.00,
+      currency: "KES",
+    };
+    if (!emailData) {
+      return;
+    }
+    // 2. Generate Customer HTML
+    const customerEmailHtml = generateOrderEmail({
+      ...emailData,
+      recipientType: "customer",
+    });
+
+    // 3. Generate Admin HTML
+    const adminEmailHtml = generateOrderEmail({
+      ...emailData,
+      recipientType: "admin",
+    });
+
+    // 4. Send Emails (Example using Nodemailer)
+    // await sendEmail({
+    //   to: shippingInfo.email,
+    //   subject: `Order Confirmation - ${reference}`,
+    //   html: customerEmailHtml,
+    // });
+
+    await sendEmail({
+      to: "kevinthuitairungu@gmail.com",
+      subject: `[NEW ORDER] ${reference}`,
+      html: adminEmailHtml,
+    });
+
     // await OrderModel.findOneAndUpdate({ id: reference }, { status: 'PAID', paymentId: trackingId });
     console.log("Database updated to PAID");
   } else if (statusData.payment_status_description === "Failed") {
