@@ -8,7 +8,7 @@ import Filter from "./Filter";
 const products: ProductsType = [
   {
     id: 1,
-    name: "Ama Dablam 2025 Pre-order (Hard Copy)",
+    name: "Beyond The Summit Pre-order (Hard Copy)",
     shortDescription:
       "A technical climbing journey of grit, vision and purpose.",
     description:
