@@ -165,7 +165,7 @@ const PesapalCheckout = () => {
               {/* THE SAFETY BUTTON */}
               <div className="text-center py-5 ">
                 <p className="text-sm text-gray-500 mb-2">
-                  Payment completed but didn't redirect?
+                  Payment completed but didn&apos;t redirect?
                 </p>
                 <a
                   href={`/response?OrderTrackingId=${orderTrackingId}`}

@@ -12,18 +12,25 @@ import {
 import Link from "next/link";
 import useCartStore from "@/stores/cartStore";
 
+interface PaymentDetails {
+  payment_method: string;
+  currency: string;
+  amount: number;
+  status: string;
+}
+
 const ResponseContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const orderTrackingId = searchParams.get("OrderTrackingId");
   const { clearCart } = useCartStore(); // Assuming you want to clear cart on success
 
-
   const [status, setStatus] = useState<"loading" | "success" | "failed">(
     "loading"
   );
-  const [paymentDetails, setPaymentDetails] = useState<any>(null);
-
+  const [paymentDetails, setPaymentDetails] = useState<PaymentDetails | null>(
+    null
+  );
   useEffect(() => {
     if (!orderTrackingId) {
       setStatus("failed");
@@ -46,7 +53,7 @@ const ResponseContent = () => {
           // Usually "Completed" is the only safe "Success" state.
           setStatus("failed");
         }
-        clearCart(); // Clear the cart 
+        clearCart(); // Clear the cart
 
         setPaymentDetails(data);
       } catch (error) {
@@ -143,11 +150,9 @@ const ResponseContent = () => {
 
             <div className="p-8 flex flex-col gap-3">
               <p className="text-center text-gray-500 text-sm mb-4">
-                Don't worry, you haven't been charged. Please try again or use a
-                different payment method.
+                Don&apos;t worry, you haven&apos;t been charged. Please try
+                again or use a different payment method.
               </p>
-
-          
 
               <Link
                 href="/"

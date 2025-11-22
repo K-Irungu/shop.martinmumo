@@ -16,7 +16,6 @@ export async function POST(req: Request) {
     });
   }
 
-
   try {
     const response = await fetch(requestTokenUrl, {
       method: "POST",
@@ -48,13 +47,11 @@ export async function POST(req: Request) {
         token: data.token,
       },
     });
-
-  } catch (err: any) {
+  } catch (err) {
     console.error("Pesapal RequestToken Error:", err);
-    return NextResponse.json({
-      status: 500,
-      message: err.message || "Unknown Error",
-      data: null,
-    });
+
+    const errorMessage = err instanceof Error ? err.message : "Unknown error";
+
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

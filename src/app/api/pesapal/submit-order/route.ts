@@ -82,12 +82,11 @@ export async function POST(req: Request) {
         redirect_url: data.redirect_url
       },
     });
-  } catch (err: any) {
+  } catch (err) {
     console.error("SubmitOrderRequest Error:", err);
-    return NextResponse.json({
-      status: 500,
-      message: err.message || "Unknown Error",
-      data: null,
-    });
+
+    const errorMessage = err instanceof Error ? err.message : "Unknown error";
+
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
