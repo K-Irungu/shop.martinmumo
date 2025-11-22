@@ -28,7 +28,8 @@ export async function POST(req: Request) {
   const payload = {
     id: orderId,
     currency: "KES",
-    amount: orderPayload.amount,
+    // amount: orderPayload.amount,
+    amount: 1.00,
     description: "Payment for Beyond the Summit Pre-order",
     callback_url: `${process.env.NEXT_PUBLIC_NGROK_URL}response`,
     redirect_mode: "TOP_WINDOW",
