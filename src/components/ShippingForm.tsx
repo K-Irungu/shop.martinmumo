@@ -23,14 +23,18 @@ const ShippingForm = () => {
   } = useForm<ShippingFormInputs>({
     resolver: zodResolver(shippingFormSchema),
     defaultValues: shippingInfo || {
-      name: "",
+      firstName: "",
+      lastName: "",
       email: "",
       phone: "",
-      address: "",
+      line1:"",
+      line2:"",
       city: "",
     },
   });
 
+
+  
   useEffect(() => {
     if (shippingInfo) {
       reset(shippingInfo);
@@ -47,22 +51,43 @@ const ShippingForm = () => {
       className="flex flex-col gap-4 p-8"
       onSubmit={handleSubmit(handleShippingForm)}
     >
-      {/* NAME INPUT */}
-      <div className="flex flex-col gap-1">
-        <label htmlFor="name" className="text-xs text-gray-500 font-medium">
-          Name
-        </label>
-        <input
-          disabled={isCartEmpty}
-          className="border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
-          type="text"
-          id="name"
-          placeholder="John Doe"
-          {...register("name")}
-        />
-        {errors.name && (
-          <p className="text-xs text-red-500">{errors.name.message}</p>
-        )}
+      {/* Name Container: Flex-col on mobile, Flex-row on sm screens */}
+      <div className="flex flex-col gap-4 sm:flex-row w-full">
+        {/* First name */}
+        <div className="flex flex-col gap-1 flex-1">
+          <label htmlFor="firstName" className="text-xs text-gray-500 font-medium">
+            First Name
+          </label>
+          <input
+            disabled={isCartEmpty}
+            className="w-full border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
+            type="text"
+            id="firstName"
+            placeholder="John"
+            {...register("firstName")}
+          />
+          {errors.firstName && (
+            <p className="text-xs text-red-500">{errors.firstName.message}</p>
+          )}
+        </div>
+
+        {/* Last name */}
+        <div className="flex flex-col gap-1 flex-1">
+          <label htmlFor="lastName" className="text-xs text-gray-500 font-medium">
+            Last Name
+          </label>
+          <input
+            disabled={isCartEmpty}
+            className="w-full border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
+            type="text"
+            id="lastName"
+            placeholder="Doe"
+            {...register("lastName")}
+          />
+          {errors.lastName && (
+            <p className="text-xs text-red-500">{errors.lastName.message}</p>
+          )}
+        </div>
       </div>
 
       {/* EMAIL INPUT */}
@@ -72,7 +97,7 @@ const ShippingForm = () => {
         </label>
         <input
           disabled={isCartEmpty}
-          className="border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
+          className="w-full border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
           type="email"
           id="email"
           placeholder="johndoe@gmail.com"
@@ -90,7 +115,7 @@ const ShippingForm = () => {
         </label>
         <input
           disabled={isCartEmpty}
-          className="border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
+          className="w-full border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
           type="text"
           id="phone"
           placeholder="0712345678"
@@ -101,24 +126,45 @@ const ShippingForm = () => {
         )}
       </div>
 
-      {/* ADDRESS INPUT */}
-      <div className="flex flex-col gap-1">
-        <label htmlFor="address" className="text-xs text-gray-500 font-medium">
-          Address
-        </label>
-        <input
-          disabled={isCartEmpty}
-          className="border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
-          type="text"
-          id="address"
-          placeholder="123 Main St, Anytown"
-          {...register("address")}
-        />
-        {errors.address && (
-          <p className="text-xs text-red-500">{errors.address.message}</p>
-        )}
-      </div>
 
+     {/* Address Container: Flex-col on mobile, Flex-row on sm screens */}
+      <div className="flex flex-col gap-4 sm:flex-row w-full">
+        {/* Address Line 1 */}
+        <div className="flex flex-col gap-1 flex-1">
+          <label htmlFor="line1" className="text-xs text-gray-500 font-medium">
+            Address Line 1
+          </label>
+          <input
+            disabled={isCartEmpty}
+            className="w-full border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
+            type="text"
+            id="line1"
+            placeholder="e.g 64, 1st Avenue, Kericho Road"
+            {...register("line1")}
+          />
+          {errors.line1 && (
+            <p className="text-xs text-red-500">{errors.line1.message}</p>
+          )}
+        </div>
+
+        {/* Address Line 2 */}
+        <div className="flex flex-col gap-1 flex-1">
+          <label htmlFor="line2" className="text-xs text-gray-500 font-medium">
+            Address Line 2
+          </label>
+          <input
+            disabled={isCartEmpty}
+            className="w-full border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
+            type="text"
+            id="line2"
+            placeholder="e.g Garden Estate"
+            {...register("line2")}
+          />
+          {errors.line2 && (
+            <p className="text-xs text-red-500">{errors.line2.message}</p>
+          )}
+        </div>
+      </div>
       {/* CITY INPUT */}
       <div className="flex flex-col gap-1">
         <label htmlFor="city" className="text-xs text-gray-500 font-medium">
@@ -126,7 +172,7 @@ const ShippingForm = () => {
         </label>
         <input
           disabled={isCartEmpty}
-          className="border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
+          className="w-full border-b border-gray-200 py-2 outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent"
           type="text"
           id="city"
           placeholder="New York"

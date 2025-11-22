@@ -8,10 +8,12 @@ const useCartStore = create<CartStoreStateType & CartStoreActionsType>()(
       cart: [],
       hasHydrated: false,
       shippingInfo: {
-        name: "",
+        firstName: "",
+        lastName: "",
         email: "",
         phone: "",
-        address: "",
+        line1:"",
+        line2:"",
         city: "",
       }, // Initialize as null
 

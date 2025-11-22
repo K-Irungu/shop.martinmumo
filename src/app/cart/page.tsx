@@ -59,7 +59,7 @@ const CartContent = () => {
       {/* STEPS & DETAILS */}
       <div className="w-full flex flex-col lg:flex-row gap-16">
         {/* MAIN CONTENT AREA */}
-        <div className="w-full lg:w-7/12 shadow-lg border-1 border-gray-100 rounded-lg flex flex-col gap-8 min-h-[400px]">
+        <div className="w-full lg:w-7/12 shadow-lg border-1 border-gray-100 rounded-lg flex flex-col gap-8 min-h-[400px] ">
           {activeStep === 1 ? (
             // --- STEP 1 LOGIC ---
             cart.length > 0 ? (
@@ -135,6 +135,28 @@ const CartContent = () => {
         <div className="w-full lg:w-5/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8 h-max">
           <h2 className="font-semibold">Cart Details</h2>
           <div className="flex flex-col gap-4">
+            {/* UPDATED: Product Names List */}
+            <div className="flex justify-between text-sm">
+              <p className="text-gray-500">Item</p>
+              <div className="flex flex-col items-end gap-1 max-w-[400px]">
+                {cart.length > 0 ? (
+                  cart.map((item) => (
+                    <p
+                      key={item.id + item.selectedSize + item.selectedColor}
+                      className="font-medium text-right"
+                    >
+                      <span className="text-xs text-gray-400 mr-1">
+                        x{item.quantity}
+                      </span>
+                      {item.name}
+                    </p>
+                  ))
+                ) : (
+                  <p className="font-medium text-gray-400">-</p>
+                )}
+              </div>
+            </div>
+            {/* End Update */}
             <div className="flex justify-between text-sm">
               <p className="text-gray-500">Subtotal</p>
               <p className="font-medium">

@@ -27,7 +27,8 @@ export type CartItemsType = CartItemType[];
 
 // 1. Shipping Schema
 export const shippingFormSchema = z.object({
-  name: z.string().min(1, "Name is required!"),
+  firstName: z.string().min(1, "firstName is required!"),
+  lastName: z.string().min(1, "lastName is required!"),
   // Fixed: z.email() is not valid standalone, must be z.string().email()
   email: z.string().email("Invalid email address!"), 
   phone: z
@@ -35,7 +36,8 @@ export const shippingFormSchema = z.object({
     .min(10, "Phone number must be at least 10 digits!")
     .max(13, "Phone number is too long!") // Adjusted for typical localized formats (e.g., 254...)
     .regex(/^\d+$/, "Phone number must contain only numbers!"),
-  address: z.string().min(1, "Address is required!"),
+  line1: z.string().min(1, "Address Line 1 is required!"),
+  line2: z.string().min(1, "Address Line 2 is required!"),
   city: z.string().min(1, "City is required!"),
 });
 
