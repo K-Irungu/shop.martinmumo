@@ -81,8 +81,8 @@ const ProductPage = async ({
         </div>
         <p className="text-gray-500 text-xs">
           By clicking Pay Now, you agree to our{" "}
-          <span className="underline hover:text-black">Terms & Conditions</span>{" "}
-          and <span className="underline hover:text-black">Privacy Policy</span>
+          <a href="/terms-and-conditions" className="underline hover:text-black">Terms & Conditions</a>{" "}
+          and <a href="/privacy-policy" className="underline hover:text-black">Privacy Policy</a>
           . You authorize us to charge your selected payment method for the
           total amount shown.
         </p>
