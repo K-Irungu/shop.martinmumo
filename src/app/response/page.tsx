@@ -121,7 +121,7 @@ const ResponseContent = () => {
               </div>
 
               <Link
-                href="/products"
+                href="/"
                 className="mt-4 w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition flex items-center justify-center gap-2"
               >
                 <ShoppingBag className="w-4 h-4" />
