@@ -82,7 +82,7 @@ const Navbar = () => {
             <Link href="/terms-and-conditions" className="text-white hover:text-gray-200 transition-colors">
               Terms & Conditions
             </Link>
-            <Link href="#" className="text-white hover:text-gray-200 transition-colors">
+            <Link href="/privacy-policy" className="text-white hover:text-gray-200 transition-colors">
               Privacy Policy
             </Link>
           </div>
@@ -142,7 +142,7 @@ const Navbar = () => {
               
               <motion.li variants={menuLinkVariants}>
                 <Link
-                  href="#"
+                  href="/privacy-policy"
                   onClick={closeMobileMenu}
                   className="text-2xl font-bold text-white hover:text-gray-300 block"
                 >
