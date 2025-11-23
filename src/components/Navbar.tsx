@@ -9,14 +9,14 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // --- Variants ---
-// Professional & Smooth Variants (No bounce)
 const menuOverlayVariants = {
   hidden: {
     x: "100%",
     opacity: 0,
     transition: {
       duration: 0.4,
-      ease: [0.22, 1, 0.36, 1],
+      // Fix 1: Type the array explicitly as a tuple of 4 numbers
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
   visible: {
@@ -24,7 +24,8 @@ const menuOverlayVariants = {
     opacity: 1,
     transition: {
       duration: 0.4,
-      ease: [0.22, 1, 0.36, 1],
+      // Fix 1: Type the array explicitly as a tuple of 4 numbers
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       when: "beforeChildren",
       staggerChildren: 0.1,
     },
@@ -41,7 +42,8 @@ const menuLinkVariants = {
     y: 0,
     transition: {
       duration: 0.1, 
-      ease: "easeOut", 
+      // Fix 2: Use 'as const' so TypeScript knows this is specifically "easeOut", not just any string
+      ease: "easeOut" as const, 
     },
   },
 };
