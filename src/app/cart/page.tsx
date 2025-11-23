@@ -59,17 +59,17 @@ const CartContent = () => {
       {/* STEPS & DETAILS */}
       <div className="w-full flex flex-col lg:flex-row gap-16">
         {/* MAIN CONTENT AREA */}
-        <div className="w-full lg:w-7/12 shadow-lg border-1 border-gray-100 rounded-lg flex flex-col gap-8 min-h-[400px] ">
+        <div className="w-full lg:w-7/12 shadow-lg border-1 border-gray-100 rounded-lg flex flex-col gap-8 rounded-xl">
           {activeStep === 1 ? (
             // --- STEP 1 LOGIC ---
             cart.length > 0 ? (
               // CASE A: HAS ITEMS
               cart.map((item) => (
                 <div
-                  className="flex items-center justify-between p-8"
+                  className="flex items-center justify-between p-8 border border-gray-200 rounded-xl" 
                   key={item.id + item.selectedSize + item.selectedColor}
-                >
-                  <div className="flex gap-8">
+                  >
+                  <div className="flex gap-8 ">
                     <div className="relative w-32 h-32 bg-gray-50 rounded-lg overflow-hidden">
                       <Image
                         src={item.images[item.selectedColor]}
